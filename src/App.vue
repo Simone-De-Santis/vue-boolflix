@@ -20,5 +20,8 @@ export default {
 
 <style lang="scss">
 #app {
+  h1 {
+    color: green;
+  }
 }
 </style>

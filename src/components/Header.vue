@@ -4,25 +4,53 @@
       <a class="navbar-brand">Navbar</a>
       <div class="d-flex">
         <input
-          v-model.trim="userSearch"
+          v-model.trim="queryUserSearch"
+          @keyup.enter="callAndFiler"
           type="text"
           class="w-100"
           placeholder="Cerca o inizia una nuova chat..."
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button
+          @click="callAndFiler"
+          class="btn btn-outline-success"
+          type="submit"
+        >
+          Search
+        </button>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Header",
   data() {
     return {
-      userSearch: "",
+      baseUri: "https://api.themoviedb.org/3/",
+      typeSearch: "search/movie",
+      apiKey: "?api_key=7df8fb39dc7a1252ca6c3e09b990db4b",
+      queryUserSearch: "pinocchio",
+      count: 0,
+      allDataCall: [],
     };
   },
+  methods: {
+    callAndFiler() {
+      axios
+        .get(
+          `
+        ${this.baseUri}${this.typeSearch}${this.apiKey}&query=${this.queryUserSearch}
+        `
+        )
+        .then((res) => {
+          this.allDataCall = res.data.results;
+          console.log(this.allDataCall);
+        });
+    },
+  },
+  created() {},
 };
 </script>
 
