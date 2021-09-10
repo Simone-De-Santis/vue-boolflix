@@ -2,9 +2,7 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                prependData: `
-                        
-                        
+                prependData: `                                          
                         @import "~bootstrap/scss/bootstrap";
                            `
             }

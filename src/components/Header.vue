@@ -32,7 +32,6 @@ export default {
       typeSearch: "search/movie",
       apiKey: "?api_key=7df8fb39dc7a1252ca6c3e09b990db4b",
       queryUserSearch: "pinocchio",
-      count: 0,
       allDataCall: [],
     };
   },
@@ -46,8 +45,12 @@ export default {
         )
         .then((res) => {
           this.allDataCall = res.data.results;
-          console.log(this.allDataCall);
+          console.log("figlio", this.allDataCall[0].vote_average);
         });
+      this.$emit("title", this.allDataCall[0].title);
+      this.$emit("original_title", this.allDataCall[0].original_title);
+      this.$emit("original_language", this.allDataCall[0].original_language);
+      this.$emit("vote_average", this.allDataCall[0].vote_average);
     },
   },
   created() {},
