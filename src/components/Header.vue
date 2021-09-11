@@ -33,19 +33,27 @@ export default {
       typeSearch: "search/movie",
       apiKey: "?api_key=7df8fb39dc7a1252ca6c3e09b990db4b",
       queryUserSearch: "pinocchio",
-      allDataCall: [],
+      listMovies: [],
+      listSeries: [],
     };
   },
   methods: {
     StartSearch() {
       axios
         .get(
+          `${this.baseUri}search/tv${this.apiKey}&query=${this.queryUserSearch}`
+        )
+        .then((res) => {
+          this.listSeries = res.data.results;
+          this.$emit("listSeries", this.listSeries);
+        });
+      axios
+        .get(
           `${this.baseUri}${this.typeSearch}${this.apiKey}&query=${this.queryUserSearch}`
         )
         .then((res) => {
-          this.allDataCall = res.data.results;
-          console.log("figlio", this.allDataCall);
-          this.$emit("allDataCall", this.allDataCall);
+          this.listMovies = res.data.results;
+          this.$emit("listMovies", this.listMovies);
         });
     },
   },

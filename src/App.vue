@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header @allDataCall="getAllDataCall" />
-    <Main :allDataCards="allDataCall" />
+    <Header @listMovies="getListMovies" @listSeries="getListSeries" />
+    <Main :listMovies="listMovies" :listSeries="listSeries" />
     <h1>titolo originale arrivato al padre {{}}</h1>
   </div>
 </template>
@@ -18,13 +18,16 @@ export default {
   },
   data() {
     return {
-      allDataCall: [],
+      listMovies: [],
+      listSeries: [],
     };
   },
   methods: {
-    getAllDataCall(allDataCall) {
-      this.allDataCall = allDataCall;
-      console.log("app", this.allDataCall);
+    getListMovies(listMovies) {
+      this.listMovies = listMovies;
+    },
+    getListSeries(listSeries) {
+      this.listSeries = listSeries;
     },
   },
 };
