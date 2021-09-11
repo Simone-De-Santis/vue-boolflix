@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @listMovies="getListMovies" @listSeries="getListSeries" />
-    <section class="container">
+    <section class="">
       <Main :listMovies="listMovies" :listSeries="listSeries" />
     </section>
   </div>

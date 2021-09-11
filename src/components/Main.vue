@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <h2 class="title-section my-4">list di movies</h2>
+      <h2 class="title-section my-4">movies</h2>
       <div class="container">
         <div class="row row-cols-1 row-cols-md-4 g-4">
           <Card
@@ -17,17 +17,19 @@
       </div>
     </section>
     <section>
-      <h2 class="title-section my-4">list series</h2>
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <Card
-          v-for="(card, index) in listSeries"
-          :key="index"
-          :Titleoriginal="card.original_name"
-          :Title="card.name"
-          :Lenguage="card.original_language"
-          :Vote="card.vote_average"
-          :Poster="card.poster_path"
-        />
+      <h2 class="title-section my-4">series tv</h2>
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <Card
+            v-for="(card, index) in listSeries"
+            :key="index"
+            :Titleoriginal="card.original_name"
+            :Title="card.name"
+            :Lenguage="card.original_language"
+            :Vote="card.vote_average"
+            :Poster="card.poster_path"
+          />
+        </div>
       </div>
     </section>
   </div>
