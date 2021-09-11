@@ -1,18 +1,8 @@
 <template>
   <div id="app">
-    <Header
-      @title="getTitle"
-      @original_title="getOriginalTitle"
-      @original_language="getOriginalLanguage"
-      @vote_average="getVoteAverage"
-    />
-    <Main
-      :title="titleCard"
-      :original_title="original_title"
-      :original_language="original_language"
-      :vote_average="vote_average"
-    />
-    <h1>titolo originale arrivato al padre {{ original_title }}</h1>
+    <Header @allDataCall="getAllDataCall" />
+    <Main :allDataCards="allDataCall" />
+    <h1>titolo originale arrivato al padre {{}}</h1>
   </div>
 </template>
 
@@ -28,26 +18,13 @@ export default {
   },
   data() {
     return {
-      titleCard: "",
-      original_title: "",
-      original_language: "",
-      vote_average: "",
+      allDataCall: [],
     };
   },
   methods: {
-    getTitle(title) {
-      this.titleCard = title;
-    },
-    getOriginalTitle(original_title) {
-      this.original_title = original_title;
-    },
-    getOriginalLanguage(original_language) {
-      this.original_language = original_language;
-      console.log("padre lingua", this.original_language);
-    },
-    getVoteAverage(vote_average) {
-      this.vote_average = vote_average;
-      console.log("padre vote", this.vote_average);
+    getAllDataCall(allDataCall) {
+      this.allDataCall = allDataCall;
+      console.log("app", this.allDataCall);
     },
   },
 };

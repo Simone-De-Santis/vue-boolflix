@@ -5,13 +5,13 @@
       <div class="d-flex">
         <input
           v-model.trim="queryUserSearch"
-          @keyup.enter="callAndFiler"
+          @keyup.enter="StartSearch"
           type="text"
           class="w-100"
           placeholder="Cerca o inizia una nuova chat..."
         />
         <button
-          @click="callAndFiler"
+          @click="StartSearch"
           class="btn btn-outline-success"
           type="submit"
         >
@@ -24,6 +24,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   name: "Header",
   data() {
@@ -36,23 +37,19 @@ export default {
     };
   },
   methods: {
-    callAndFiler() {
+    StartSearch() {
       axios
         .get(
-          `
-        ${this.baseUri}${this.typeSearch}${this.apiKey}&query=${this.queryUserSearch}
-        `
+          `${this.baseUri}${this.typeSearch}${this.apiKey}&query=${this.queryUserSearch}`
         )
         .then((res) => {
           this.allDataCall = res.data.results;
-          console.log("figlio", this.allDataCall[0].vote_average);
+          console.log("figlio", this.allDataCall);
+          this.$emit("allDataCall", this.allDataCall);
         });
-      this.$emit("title", this.allDataCall[0].title);
-      this.$emit("original_title", this.allDataCall[0].original_title);
-      this.$emit("original_language", this.allDataCall[0].original_language);
-      this.$emit("vote_average", this.allDataCall[0].vote_average);
     },
   },
+
   created() {},
 };
 </script>
