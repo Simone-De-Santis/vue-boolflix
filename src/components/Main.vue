@@ -2,44 +2,36 @@
   <div>
     <h1>list di movies</h1>
     <div class="container d-flex flex-wrap">
-      <div
+      <Card
         v-for="(card, index) in listMovies"
         :key="index"
-        class="card"
-        style="width: 18rem"
-      >
-        <img src="" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">Title original:{{ card.original_title }}</p>
-          <p class="card-text">Title:{{ card.title }}</p>
-          <p class="card-text">Lenguage:{{ card.original_language }}</p>
-          <p class="card-text">Vote:{{ card.vote_average }}</p>
-        </div>
-      </div>
+        :Titleoriginal="card.original_title"
+        :Title="card.title"
+        :Lenguage="card.original_language"
+        :Vote="card.vote_average"
+      />
     </div>
     <h2>list series</h2>
     <div class="container d-flex flex-wrap">
-      <div
+      <Card
         v-for="(card, index) in listSeries"
         :key="index"
-        class="card"
-        style="width: 18rem"
-      >
-        <img src="" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">Title original:{{ card.original_name }}</p>
-          <p class="card-text">Title:{{ card.name }}</p>
-          <p class="card-text">Lenguage:{{ card.original_language }}</p>
-          <p class="card-text">Vote:{{ card.vote_average }}</p>
-        </div>
-      </div>
+        :Titleoriginal="card.original_name"
+        :Title="card.name"
+        :Lenguage="card.original_language"
+        :Vote="card.vote_average"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import Card from "./Card.vue";
 export default {
   name: "Main",
+  components: {
+    Card,
+  },
   data() {
     return {};
   },

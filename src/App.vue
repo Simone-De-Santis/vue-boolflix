@@ -37,6 +37,11 @@ export default {
 #app {
   h1 {
     color: green;
+    text-transform: uppercase;
+  }
+  h2 {
+    color: red;
+    text-transform: uppercase;
   }
 }
 </style>

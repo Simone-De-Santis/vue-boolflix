@@ -41,19 +41,19 @@ export default {
     StartSearch() {
       axios
         .get(
-          `${this.baseUri}search/tv${this.apiKey}&query=${this.queryUserSearch}`
-        )
-        .then((res) => {
-          this.listSeries = res.data.results;
-          this.$emit("listSeries", this.listSeries);
-        });
-      axios
-        .get(
           `${this.baseUri}${this.typeSearch}${this.apiKey}&query=${this.queryUserSearch}`
         )
         .then((res) => {
           this.listMovies = res.data.results;
           this.$emit("listMovies", this.listMovies);
+        });
+      axios
+        .get(
+          `${this.baseUri}search/tv${this.apiKey}&query=${this.queryUserSearch}`
+        )
+        .then((res) => {
+          this.listSeries = res.data.results;
+          this.$emit("listSeries", this.listSeries);
         });
     },
   },
