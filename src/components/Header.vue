@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand">Navbar</a>
+      <a class="navbar-brand">Boolfix</a>
       <div class="d-flex">
         <input
           v-model.trim="queryUserSearch"

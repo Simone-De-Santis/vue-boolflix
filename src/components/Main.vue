@@ -9,6 +9,7 @@
         :Title="card.title"
         :Lenguage="card.original_language"
         :Vote="card.vote_average"
+        :Poster="card.poster_path"
       />
     </div>
     <h2>list series</h2>
@@ -20,6 +21,7 @@
         :Title="card.name"
         :Lenguage="card.original_language"
         :Vote="card.vote_average"
+        :Poster="card.poster_path"
       />
     </div>
   </div>

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <Header @listMovies="getListMovies" @listSeries="getListSeries" />
-    <Main :listMovies="listMovies" :listSeries="listSeries" />
-    <h1>titolo originale arrivato al padre {{}}</h1>
+    <section class="container">
+      <Main :listMovies="listMovies" :listSeries="listSeries" />
+    </section>
   </div>
 </template>
 
