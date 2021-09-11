@@ -36,13 +36,8 @@ export default {
 
 <style lang="scss">
 #app {
-  h1 {
-    color: green;
-    text-transform: uppercase;
-  }
-  h2 {
-    color: red;
-    text-transform: uppercase;
-  }
+  background-color: black;
+  height: 100vh;
+  overflow-y: auto;
 }
 </style>

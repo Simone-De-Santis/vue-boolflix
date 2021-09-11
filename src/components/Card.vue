@@ -1,11 +1,13 @@
 <template>
-  <div class="card" style="width: 18rem">
-    <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <p class="card-text">Title original:{{ Titleoriginal }}</p>
-      <p class="card-text">Title:{{ Title }}</p>
-      <p class="card-text">Lenguage:{{ Lenguage }}</p>
-      <p class="card-text">Vote:{{ Vote }}</p>
+  <div class="col">
+    <div class="card text-white bg-dark">
+      <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <p class="card-text">Title original:{{ Titleoriginal }}</p>
+        <p class="card-text">Title:{{ Title }}</p>
+        <p class="card-text">Lenguage:{{ Lenguage }}</p>
+        <p class="card-text">Vote:{{ Vote }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +32,12 @@ export default {
 </script>
 
 
-<style>
+<style scoped lang="scss">
+.col {
+  .card {
+    min-height: 650px;
+  }
+}
 </style>
 
 

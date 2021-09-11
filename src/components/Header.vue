@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-light bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand">Boolfix</a>
+      <a id="my-navbar-brand" class="navbar-brand">Boolfix</a>
       <div class="d-flex">
         <input
           v-model.trim="queryUserSearch"
@@ -12,7 +12,7 @@
         />
         <button
           @click="StartSearch"
-          class="btn btn-outline-success"
+          class="btn btn-outline-danger"
           type="submit"
         >
           Search
@@ -32,7 +32,7 @@ export default {
       baseUri: "https://api.themoviedb.org/3/",
       typeSearch: "search/movie",
       apiKey: "?api_key=7df8fb39dc7a1252ca6c3e09b990db4b",
-      queryUserSearch: "pinocchio",
+      queryUserSearch: "Simpson",
       listMovies: [],
       listSeries: [],
     };
@@ -63,4 +63,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#my-navbar-brand {
+  color: #e50914;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
 </style>
