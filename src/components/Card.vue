@@ -1,12 +1,12 @@
 <template>
-  <div  class="col">
-    <div class="card text-white bg-dark">
+  <div class="col">
+    <div v-on:mouseover="mouseover" v-on:mouseleave="mouseleave" class="card text-white bg-dark">
       <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <p class="card-text">Title original:{{ Titleoriginal }}</p>
-        <p class="card-text">Title:{{ Title }}</p>
+      <div  class="card-img-overlay" :class="overDate">
+        <p class="card-text">Title original : {{ Titleoriginal }}</p>
+        <p class="card-text">Title : {{ Title }}</p>
         <p class="card-text">
-          Lenguage:  {{ Lenguage }}  
+          Lenguage : {{ Lenguage }}  
           <span>
             <img
               :src="require('@/assets/img/flag/' +  getFlag(Lenguage) + '.png')"
@@ -22,12 +22,9 @@
       </div>
     </div>
     <div id="mouse">
-  <a
-    v-on:mouseover="mouseover"
-    v-on:mouseleave="mouseleave">
-    {{message}}
-  </a>
-</div>
+      
+    </div>
+    
   </div>
 </template>
 
@@ -47,10 +44,16 @@ export default {
       voteStar: '<i class="fas fa-star">',
       voteFormatter: "",
       lenguageFlag: "it",
-      message: "Hover Me!",
+      overDate: "d-none",
     };
   },
   methods: {
+    mouseover: function () {
+      this.overDate = "d-block mybg-transparent ";
+    },
+    mouseleave: function () {
+      this.overDate = "d-none";
+    },
     getRounderVote(Vote) {
       return (this.voteFormatter = Math.ceil(Vote / 2));
     },
@@ -85,12 +88,6 @@ export default {
         return (this.lenguageFlag = "not-flag");
       }
     },
-    mouseover: function () {
-      this.message = "Good!";
-    },
-    mouseleave: function () {
-      this.message = "Hover Me!";
-    },
   },
 };
 </script>
@@ -98,11 +95,11 @@ export default {
 
 <style scoped lang="scss">
 .col {
-  .card {
-    min-height: 650px;
-  }
   .flag {
     width: 50px;
+  }
+  .mybg-transparent {
+    background-color: rgba(0, 0, 0, 0.774);
   }
 }
 </style>
