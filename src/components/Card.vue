@@ -1,12 +1,13 @@
 <template>
   <div class="col">
     <div v-on:mouseover="mouseover" v-on:mouseleave="mouseleave" class="card text-white bg-dark">
-      <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." />
+      <img :src= getUrlImage() class="card-img-top" alt="..." /> 
+       <!-- <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." /> -->
       <div  class="card-img-overlay" :class="overDate">
         <p class="card-text">Title original : {{ Titleoriginal }}</p>
         <p class="card-text">Title : {{ Title }}</p>
         <p class="card-text">
-          Lenguage : {{ Lenguage }}  
+          Lenguage : 
           <span>
             <img
               :src="require('@/assets/img/flag/' +  getFlag(Lenguage) + '.png')"
@@ -41,6 +42,7 @@ export default {
   data() {
     return {
       baseUriPoster: "https://image.tmdb.org/t/p/w342",
+      imgPoster: "",
       voteStar: '<i class="fas fa-star">',
       voteFormatter: "",
       lenguageFlag: "it",
@@ -48,6 +50,13 @@ export default {
     };
   },
   methods: {
+    getUrlImage() {
+      if (this.Poster == null) {
+        return (this.imgPoster =
+          "https://www.altavod.com/assets/images/poster-placeholder.png");
+      }
+      return (this.imgPoster = this.baseUriPoster + this.Poster);
+    },
     mouseover: function () {
       this.overDate = "d-block mybg-transparent ";
     },
@@ -97,6 +106,9 @@ export default {
 .col {
   .flag {
     width: 50px;
+  }
+  .card-img-top {
+    min-height: 456px;
   }
   .mybg-transparent {
     background-color: rgba(0, 0, 0, 0.774);
