@@ -1,31 +1,27 @@
 <template>
   <div class="col">
-    <div v-on:mouseover="mouseover" v-on:mouseleave="mouseleave" class="card text-white bg-dark">
-      <img :src= getUrlImage() class="card-img-top" alt="..." /> 
-       <!-- <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." /> -->
-      <div  class="card-img-overlay" :class="overDate">
+    <div
+      v-on:mouseover="mouseover"
+      v-on:mouseleave="mouseleave"
+      class="card text-white bg-dark"
+    >
+      <img :src="getUrlImage()" class="card-img-top" alt="..." />
+      <!-- <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." /> -->
+      <div class="card-img-overlay my-overflow" :class="overDate">
         <p class="card-text">Title original : {{ Titleoriginal }}</p>
         <p class="card-text">Title : {{ Title }}</p>
-        <p class="card-text">
-          Lenguage : 
-          <span>
-            <img
-              :src="require('@/assets/img/flag/' +  getFlag(Lenguage) + '.png')"
-              alt=""
-              class="flag"
-            />
-          </span>
-          <section class="star">
-            <p v-html="getStar()"> </p>
-          </section>
+        <p class="card-text">Overview : {{ Overview }}</p>
+        <p>
+          <img
+            :src="require('@/assets/img/flag/' + getFlag(Lenguage) + '.png')"
+            alt=""
+            class="flag"
+          />
         </p>
-        <p class="card-text">Vote : {{ getRounderVote(Vote) }} / 5 </p>
+        <section class="star"><p v-html="getStar()"></p></section>
+        <p class="card-text">Vote : {{ getRounderVote(Vote) }} / 5</p>
       </div>
     </div>
-    <div id="mouse">
-      
-    </div>
-    
   </div>
 </template>
 
@@ -38,6 +34,7 @@ export default {
     Lenguage: String,
     Vote: Number,
     Poster: String,
+    Overview: String,
   },
   data() {
     return {
@@ -112,6 +109,9 @@ export default {
   }
   .mybg-transparent {
     background-color: rgba(0, 0, 0, 0.774);
+  }
+  .my-overflow {
+    overflow-y: auto;
   }
 }
 </style>

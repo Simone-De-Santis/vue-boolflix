@@ -12,6 +12,7 @@
             :Lenguage="card.original_language"
             :Vote="card.vote_average"
             :Poster="card.poster_path"
+            :Overview="card.overview"
           />
         </div>
       </div>
@@ -28,6 +29,7 @@
             :Lenguage="card.original_language"
             :Vote="card.vote_average"
             :Poster="card.poster_path"
+            :Overview="card.overview"
           />
         </div>
       </div>
