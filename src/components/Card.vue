@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div  class="col">
     <div class="card text-white bg-dark">
       <img :src="baseUriPoster + Poster" class="card-img-top" alt="..." />
       <div class="card-body">
@@ -21,6 +21,13 @@
         <p class="card-text">Vote : {{ getRounderVote(Vote) }} / 5 </p>
       </div>
     </div>
+    <div id="mouse">
+  <a
+    v-on:mouseover="mouseover"
+    v-on:mouseleave="mouseleave">
+    {{message}}
+  </a>
+</div>
   </div>
 </template>
 
@@ -40,6 +47,7 @@ export default {
       voteStar: '<i class="fas fa-star">',
       voteFormatter: "",
       lenguageFlag: "it",
+      message: "Hover Me!",
     };
   },
   methods: {
@@ -76,6 +84,12 @@ export default {
       } else {
         return (this.lenguageFlag = "not-flag");
       }
+    },
+    mouseover: function () {
+      this.message = "Good!";
+    },
+    mouseleave: function () {
+      this.message = "Hover Me!";
     },
   },
 };
