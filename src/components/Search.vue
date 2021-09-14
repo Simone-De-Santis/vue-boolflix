@@ -8,7 +8,7 @@
           @keyup.enter="emitSearch"
           type="text"
           class="w-100"
-          :placeholder="placeolder"
+          :placeholder="placeholder"
         />
         <button
           @click="emitSearch"
@@ -27,7 +27,9 @@ export default {
   name: "Search",
   props: ["placeholder", "buttonText"],
   data() {
-    userValue = "";
+    return {
+      userValue: "",
+    };
   },
   methods: {
     emitSearch() {

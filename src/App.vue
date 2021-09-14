@@ -1,42 +1,64 @@
 <template>
   <div id="app">
-    <Search placeholder="Search title..," buttonText="Search" @search="get" />
-    <!-- <Header @listMovies="getListMovies" @listSeries="getListSeries" /> -->
-    <section class="">
-      <!-- <Main :listMovies="listMovies" :listSeries="listSeries" /> -->
-    </section>
+    <Search
+      placeholder="Search title..,"
+      buttonText="Search"
+      @search="getQuery"
+    />
+    <Results :items="listMovies" id="film" title="Film" />
+    <Results :items="listSeries" id="serie" title="Serie TV" />
+    <section class=""></section>
   </div>
 </template>
 
 <script>
-// import Header from "./components/Header.vue";
-// import Main from "./components/Main.vue";
 import Search from "./components/Search.vue";
+import Results from "./components/Results.vue";
+import axios from "axios";
 
 export default {
   name: "App",
   components: {
-    // Header,
-    // Main,
     Search,
+    Results,
   },
   data() {
     return {
       listMovies: [],
       listSeries: [],
+      api: {
+        baseUri: "https://api.themoviedb.org/3/",
+        typeSearch: "search/movie",
+        apiKey: "?api_key=7df8fb39dc7a1252ca6c3e09b990db4b",
+      },
     };
   },
   methods: {
     getQuery(query) {
-      console.log(query);
+      if (!query) {
+        this.listMovies = this.series = [];
+        return;
+      }
+      this.fetchApi(query, "search/movie", "listMovies");
+      this.fetchApi(query, "search/tv", "listSeries");
     },
-
-    // getListMovies(listMovies) {
-    //   this.listMovies = listMovies;
-    // },
-    // getListSeries(listSeries) {
-    //   this.listSeries = listSeries;
-    // },
+    fetchApi(query, endpoint, entity) {
+      const params = {
+        params: {
+          query,
+          api_key: "7df8fb39dc7a1252ca6c3e09b990db4b",
+          language: "it-IT",
+        },
+      };
+      axios
+        .get(`${this.api.baseUri}${endpoint}`, params)
+        .then((res) => {
+          this[entity] = res.data.results;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
   },
 };
 </script>
