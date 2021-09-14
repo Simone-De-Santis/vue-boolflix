@@ -36,7 +36,7 @@ export default {
   methods: {
     getQuery(query) {
       if (!query) {
-        this.listMovies = this.series = [];
+        this.listMovies = this.listSeries = [];
         return;
       }
       this.fetchApi(query, "search/movie", "listMovies");
