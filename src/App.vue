@@ -1,21 +1,24 @@
 <template>
   <div id="app">
-    <Header @listMovies="getListMovies" @listSeries="getListSeries" />
+    <Search placeholder="Search title..," buttonText="Search" @search="get" />
+    <!-- <Header @listMovies="getListMovies" @listSeries="getListSeries" /> -->
     <section class="">
-      <Main :listMovies="listMovies" :listSeries="listSeries" />
+      <!-- <Main :listMovies="listMovies" :listSeries="listSeries" /> -->
     </section>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Main from "./components/Main.vue";
+// import Header from "./components/Header.vue";
+// import Main from "./components/Main.vue";
+import Search from "./components/Search.vue";
 
 export default {
   name: "App",
   components: {
-    Header,
-    Main,
+    // Header,
+    // Main,
+    Search,
   },
   data() {
     return {
@@ -24,12 +27,16 @@ export default {
     };
   },
   methods: {
-    getListMovies(listMovies) {
-      this.listMovies = listMovies;
+    getQuery(query) {
+      console.log(query);
     },
-    getListSeries(listSeries) {
-      this.listSeries = listSeries;
-    },
+
+    // getListMovies(listMovies) {
+    //   this.listMovies = listMovies;
+    // },
+    // getListSeries(listSeries) {
+    //   this.listSeries = listSeries;
+    // },
   },
 };
 </script>
