@@ -9,7 +9,8 @@
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */.col .flag{width:50px}.col .card-img-top{min-height:456px}.col .mybg-transparent{background-color:rgba(0,0,0,.774)}.col .my-overflow{overflow-y:auto}
+ */.col .flag{width:50px}.col .card-img-top{min-height:456px}.col .mybg-transparent{background-color:rgba(0,0,0,.774)}.col .my-overflow{overflow-y:auto}.title-section{font-size:2rem;text-transform:uppercase;color:red}
+
 /*!
  * Bootstrap v5.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

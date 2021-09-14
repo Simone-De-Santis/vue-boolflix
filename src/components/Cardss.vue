@@ -1,8 +1,12 @@
 <template>
   <div class="col">
-    <div class="card text-white bg-dark">
+    <div
+      v-on:mouseover="mouseover"
+      v-on:mouseleave="mouseleave"
+      class="card text-white bg-dark"
+    >
       <img :src="imagePath" class="card-img-top" alt="..." />
-      <div class="card-img-overlay my-overflow">
+      <div class="card-img-overlay my-overflow" :class="overDate">
         <p class="card-text">
           Title original : {{ item.original_title || item.original_name }}
         </p>
@@ -22,8 +26,16 @@
             class="flag"
           />
         </p>
-        <section class="star"><p></p></section>
-        <p class="card-text"></p>
+        <section class="star">
+          <i
+            v-for="n in 5"
+            :key="n"
+            :class="n <= vote ? 'fas' : 'far'"
+            class="fa-star"
+          >
+          </i>
+        </section>
+        <p class="card-text">Popularity : {{ this.item.popularity }}</p>
       </div>
     </div>
   </div>
@@ -37,11 +49,18 @@ export default {
     return {
       flags: ["en", "it"],
       baseUriPoster: "https://image.tmdb.org/t/p/w342",
+      overDate: "d-none",
     };
   },
   methods: {
     getFlag(lang) {
       return require(`@/assets/img/flag/${lang}.png`);
+    },
+    mouseover: function () {
+      this.overDate = "d-block mybg-transparent ";
+    },
+    mouseleave: function () {
+      this.overDate = "d-none";
     },
   },
   computed: {
@@ -49,6 +68,9 @@ export default {
       if (!this.item.poster_path)
         return "https://www.altavod.com/assets/images/poster-placeholder.png";
       else return this.baseUriPoster + this.item.poster_path;
+    },
+    vote() {
+      return Math.ceil(this.item.vote_average / 2);
     },
   },
 };
