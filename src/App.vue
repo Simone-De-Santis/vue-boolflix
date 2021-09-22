@@ -12,7 +12,7 @@
       :original_language="original_language"
       :vote_average="vote_average"
     />
-    <h1>titolo originale arrivato al padre {{ original_title }}</h1>
+    <h1>s {{ original_title }}</h1>
   </div>
 </template>
 
