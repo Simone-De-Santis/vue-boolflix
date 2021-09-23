@@ -2,7 +2,8 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                prependData: `                                          
+                prependData: `     
+                        @import "src/assets/scss/custom";                                     
                         @import "~bootstrap/scss/bootstrap";
                            `
             }
